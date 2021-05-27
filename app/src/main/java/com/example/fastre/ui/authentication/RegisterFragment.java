@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterFragment extends Fragment implements View.OnClickListener {
-    private EditText editTextFullName, editTextEmail, editTextPassword, editTextReTypePassword;
+    private EditText editTextFullName, editTextEmail, editTextPassword, editTextAge, editTextBloodType;
     private Button mRegister;
     private ProgressBar progressBar;
 
@@ -45,7 +45,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         editTextFullName = (EditText) view.findViewById(R.id.et_name);
         editTextEmail = (EditText) view.findViewById(R.id.et_email);
         editTextPassword = (EditText) view.findViewById(R.id.et_password);
-        editTextReTypePassword = (EditText) view.findViewById(R.id.et_repassword);
+        editTextAge = (EditText) view.findViewById(R.id.et_age);
+        editTextBloodType = (EditText) view.findViewById(R.id.et_bloodType);
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         return view;
@@ -70,12 +71,26 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String fullName = editTextFullName.getText().toString().trim();
-        String repassword = editTextReTypePassword.getText().toString().trim();
+        String bloodType = editTextBloodType.getText().toString().trim();
+        String age = editTextAge.getText().toString().trim();
+
 
         if (fullName.isEmpty())
         {
             editTextFullName.setError("Full name is required");
             editTextFullName.requestFocus();
+            return;
+        }
+
+        if(age.isEmpty()){
+            editTextAge.setError("Age is required");
+            editTextAge.requestFocus();
+            return;
+        }
+
+        if(bloodType.isEmpty()){
+            editTextBloodType.setError("Blood Type is required");
+            editTextBloodType.requestFocus();
             return;
         }
         if (email.isEmpty())
@@ -99,18 +114,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             editTextPassword.requestFocus();
             return;
         }
-        if (repassword.isEmpty())
-        {
-            editTextReTypePassword.setError("Retype the password is required");
-            editTextReTypePassword.requestFocus();
-            return;
-        }
-        if (!repassword.contentEquals(password))
-        {
-            editTextReTypePassword.setError("Password Must Match");
-            editTextReTypePassword.requestFocus();
-            return;
-        }
 
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -118,7 +121,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
                         if(task.isSuccessful()){
-                            User user = new User(fullName, email);
+                            User user = new User(fullName, age, bloodType, email);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -127,7 +130,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
 
-                                        Toast.makeText(getContext(), "User Has been Registered Succesfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getContext(), "User Has been Registered Succesfully, Verification Email Will be Sent Within 5 minutes", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
 
                                     }
