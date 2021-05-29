@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_menu"
+    app:startDestination="@+id/navigation_hospital">
+
+    <fragment
+        android:id="@+id/navigation_hospital"
+        android:name="com.example.fastre.ui.hospital.HospitalFragment"
+        android:label="@string/title_hospital"
+        tools:layout="@layout/fragment_hospital" />
+
+    <fragment
+        android:id="@+id/navigation_medical_records"
+        android:name="com.example.fastre.ui.medicalRecords.MedicalRecordsFragment"
+        android:label="@string/title_medical_records"
+        tools:layout="@layout/fragment_medical_records" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.fastre.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.example.fastre.ui.news.NewsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.fastre.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+
+</navigation>

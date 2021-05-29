@@ -13,4 +13,23 @@
     <string name="register">Register</string>
     <string name="re_type_password">Re-type Password</string>
     <string name="your_name">Full Name</string>
+    <string name="title_hospital">Hospital</string>
+    <string name="title_medical_records">Medical Records</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_news">News</string>
+    <string name="title_setting">Settings</string>
+    <string name="fastre">FasTre</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="information">Information</string>
+    <string name="location">Location</string>
+    <string name="call_ambulance">Call Ambulance</string>
+    <string name="hospital_s_preview">Hospital\'s Preview</string>
+    <string name="this_is_send_whatsapp_button">this is send whatsapp button</string>
+    <string name="this_is_location_button">this is location button</string>
+    <string name="this_is_hospital_button">this is hospital button</string>
+    <string name="call_hospital">Call Hospital</string>
+    <string name="language">Language</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="whatsapp">Whatsapp</string>
 </resources>

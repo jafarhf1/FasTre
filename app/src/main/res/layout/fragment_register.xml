@@ -4,15 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_awal"
     tools:context=".ui.authentication.RegisterFragment">
 
     <TextView
-        android:id="@+id/tv_logo"
+        android:id="@+id/text_register_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:textAlignment="center"
         android:textSize="50sp"
+        android:textColor="@color/blue_main"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/indigo_daisy"
@@ -21,11 +23,12 @@
         android:layout_marginLeft="25dp" />
 
     <TextView
-        android:id="@+id/tv_subtitle"
+        android:id="@+id/text_register_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tag"
         android:textSize="17sp"
+        android:textColor="@color/blue_main"
         android:fontFamily="@font/roboto_regular"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="50dp"
@@ -44,6 +47,7 @@
         android:fontFamily="@font/roboto_regular"
         android:background="@drawable/et_custom"
         android:textSize="15sp" />
+
     <EditText
         android:id="@+id/et_age"
         android:layout_width="match_parent"
@@ -56,8 +60,8 @@
         android:inputType="number"
         android:fontFamily="@font/roboto_regular"
         android:background="@drawable/et_custom"
-
         android:textSize="15sp" />
+
     <EditText
         android:id="@+id/et_bloodType"
         android:layout_width="match_parent"
@@ -109,7 +113,7 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/button_register"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_custom"
@@ -134,6 +138,7 @@
             android:layout_height="wrap_content"
             android:text="@string/swipe_right_for_login"
             android:textSize="15sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/roboto_regular"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
