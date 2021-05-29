@@ -3,26 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_awal"
     tools:context=".ui.authentication.LoginFragment">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FasTre"
+        android:text="@string/fastre"
         android:textSize="50sp"
+        android:textColor="@color/blue_main"
         android:fontFamily="@font/indigo_daisy"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="10dp"
-        android:layout_above="@id/tv_subtitle"
+        android:layout_above="@id/text_login_subtitle"
         android:layout_marginLeft="25dp" />
 
     <TextView
-        android:id="@+id/tv_subtitle"
+        android:id="@+id/text_login_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tag"
         android:textSize="17sp"
+        android:textColor="@color/blue_main"
         android:fontFamily="@font/roboto_regular"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="50dp"
@@ -59,7 +62,7 @@
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_password"
@@ -86,6 +89,7 @@
         android:layout_height="wrap_content"
         android:text="@string/swipe_left_for_register"
         android:textSize="15sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/roboto_regular"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
@@ -95,7 +99,7 @@
         android:id="@+id/et_forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_login"
+        android:layout_below="@+id/btn_login"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
@@ -104,15 +108,16 @@
         android:layout_marginRight="145dp"
         android:layout_marginBottom="242dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Forgot Password?"
-        android:textSize="15sp" />
+        android:text="@string/forgot_password"
+        android:textSize="15sp"
+        android:textColor="@color/black"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_login"
+        android:layout_below="@id/btn_login"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
