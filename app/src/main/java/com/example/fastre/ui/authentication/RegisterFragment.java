@@ -40,7 +40,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         mAuth = FirebaseAuth.getInstance();
-        mRegister = (Button) view.findViewById(R.id.button_register);
+        mRegister = (Button) view.findViewById(R.id.btn_register);
         mRegister.setOnClickListener(this);
         editTextFullName = (EditText) view.findViewById(R.id.et_name);
         editTextEmail = (EditText) view.findViewById(R.id.et_email);
@@ -57,10 +57,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_logo:
+            case R.id.text_register_title:
                 startActivity(new Intent(getContext(), MainActivity.class));
                 break;
-            case R.id.button_register:
+            case R.id.btn_register:
                 registerUser();
                 break;
 
