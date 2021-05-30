@@ -3,13 +3,15 @@ package com.example.fastre.ui.setting
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.example.fastre.databinding.FragmentSettingBinding
+import com.example.fastre.ui.authentication.AuthenticationActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
@@ -33,6 +35,7 @@ class SettingFragment : Fragment() {
         }
         binding.btnLogout.setOnClickListener {
             showAlertDialog()
+
         }
     }
 
@@ -46,7 +49,10 @@ class SettingFragment : Fragment() {
             ?.setMessage(dialogMessage)
             ?.setCancelable(false)
             ?.setPositiveButton("Ya") { _, _ ->
-                //koding untuk logout
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(context, AuthenticationActivity::class.java))
+                Toast.makeText(context, "Logout Successful", Toast.LENGTH_LONG).show()
+                requireActivity().finish()
             }
             ?.setNegativeButton("Tidak") { dialog, _ -> dialog.cancel() }
         val alertDialog = alertDialogBuilder?.create()

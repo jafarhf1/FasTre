@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
+
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

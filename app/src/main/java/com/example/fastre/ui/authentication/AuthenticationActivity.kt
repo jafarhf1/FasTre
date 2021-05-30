@@ -33,7 +33,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
     }
     fun buttonClicks(view: View) {
-        val mButton = findViewById<Button>(R.id.button_login)
+        val mButton = findViewById<Button>(R.id.btn_login)
 
         mButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
