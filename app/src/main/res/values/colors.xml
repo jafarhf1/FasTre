@@ -8,5 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#112d44</color>
+    <color name="blue_main">#142C44</color>
+    <color name="blue_200">#172C62</color>
+    <color name="headings">#3797CF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="gradStart">#65DCE5</color>
+    <color name="grey">#E5E5E5</color>
 
 </resources>

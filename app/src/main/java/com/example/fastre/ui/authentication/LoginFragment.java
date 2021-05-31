@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fastre.R;
+import com.example.fastre.ui.forgot_password.ForgotPasswordActivity;
 import com.example.fastre.ui.main.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,7 +40,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
-        mLogin = (Button) view.findViewById(R.id.button_login);
+        mLogin = (Button) view.findViewById(R.id.btn_login);
         mLogin.setOnClickListener(this);
         editTextEmail = (EditText) view.findViewById(R.id.et_email);
         editTextPassword = (EditText) view.findViewById(R.id.et_password);
@@ -53,11 +54,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_title:
+            case R.id.text_login_title:
                 startActivity(new Intent(getContext(), MainActivity.class));
                 break;
-            case R.id.button_login:
+            case R.id.btn_login:
                 userLogin();
+                break;
+            case R.id.et_forgotPassword:
+                startActivity(new Intent(getContext(), ForgotPasswordActivity.class));
                 break;
         }
     }
@@ -96,6 +100,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                             //redirect to user profile
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if(user.isEmailVerified()){
+                                Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getContext(), MainActivity.class));
                                 getActivity().finish();
                             }else{
