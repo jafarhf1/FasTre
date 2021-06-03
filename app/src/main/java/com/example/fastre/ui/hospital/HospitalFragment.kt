@@ -7,25 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fastre.R
-import com.example.fastre.core.data.source.Resource
-import com.example.fastre.core.data.source.remote.RemoteDataSource
-import com.example.fastre.core.data.source.remote.network.ApiConfig
-import com.example.fastre.core.data.source.remote.network.ApiResponse
-import com.example.fastre.core.data.source.remote.network.ApiService
-import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
-=======
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fastre.core.data.source.Resource
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 import com.example.fastre.core.domain.model.Hospital
 import com.example.fastre.core.domain.model.HospitalPhoto
 import com.example.fastre.core.ui.HospitalPhotoAdapter
@@ -33,28 +18,13 @@ import com.example.fastre.core.ui.PolyAdapter
 import com.example.fastre.core.ui.ScheduleAdapter
 import com.example.fastre.core.ui.ViewModelFactory
 import com.example.fastre.databinding.FragmentHospitalBinding
-<<<<<<< HEAD
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
-=======
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 
 class HospitalFragment : Fragment() {
     private lateinit var viewModel: HospitalViewModel
 
     private val listPhoto: ArrayList<HospitalPhoto> = arrayListOf()
-<<<<<<< HEAD
-    private lateinit var user: FirebaseUser
-    private lateinit var userID: String
-=======
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 
     private var _binding: FragmentHospitalBinding? = null
     private val binding get() = _binding!!
@@ -76,19 +46,15 @@ class HospitalFragment : Fragment() {
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[HospitalViewModel::class.java]
-<<<<<<< HEAD
 
             showPoli()
             showSchedule()
             showHospitalPhoto()
         }
-=======
-        }
 
         showPoli()
         showSchedule()
         showHospitalPhoto()
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
     }
 
     private fun showInformation(data: List<Hospital>?){
@@ -150,7 +116,6 @@ class HospitalFragment : Fragment() {
             setHasFixedSize(true)
             adapter = polyAdapter
         }
-<<<<<<< HEAD
 
 
        /** user = FirebaseAuth.getInstance().currentUser!!
@@ -192,8 +157,6 @@ class HospitalFragment : Fragment() {
             })
 
         } **/
-=======
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
     }
 
     private fun showSchedule(){
@@ -255,10 +218,6 @@ class HospitalFragment : Fragment() {
         }
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
