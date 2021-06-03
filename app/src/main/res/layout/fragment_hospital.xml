@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_hospital">
+
+        <TextView
+            android:id="@+id/tv_hospitalName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="35dp"
+            android:text="Rumah Sakit"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_main"
+            android:fontFamily="@font/indigo_daisy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_poly"
+            android:layout_width="0dp"
+            android:layout_height="320dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_hospitalName"
+            tools:listitem="@layout/item_poly"/>
+
+        <TextView
+            android:id="@+id/text_next_queue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginEnd="5dp"
+            android:text="Swipe ke kiri untuk melihat poli lainnya."
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/rv_poly"
+            app:layout_constraintTop_toBottomOf="@id/rv_poly" />
+
+        <TextView
+            android:id="@+id/text_information"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/text_information"
+            android:textSize="22sp"
+            android:textColor="@color/blue_main"
+            android:fontFamily="@font/lato_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_next_queue" />
+
+        <ImageButton
+            android:id="@+id/btn_callHospital"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:background="@null"
+            android:contentDescription="@string/btn_callHospital"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_blue_telephone"
+            app:layout_constraintStart_toStartOf="@+id/text_information"
+            app:layout_constraintTop_toBottomOf="@+id/text_information" />
+
+        <TextView
+            android:id="@+id/text_callHospital"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_call_hospital"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_callHospital"
+            app:layout_constraintStart_toStartOf="@+id/btn_callHospital"
+            app:layout_constraintTop_toBottomOf="@+id/btn_callHospital" />
+
+        <ImageButton
+            android:id="@+id/btn_location"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@null"
+            android:contentDescription="@string/btn_location"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_blue_location"
+            app:layout_constraintLeft_toLeftOf="@id/text_information"
+            app:layout_constraintStart_toEndOf="@+id/btn_callHospital"
+            app:layout_constraintTop_toTopOf="@+id/btn_callHospital" />
+
+        <TextView
+            android:id="@+id/text_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_location"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_location"
+            app:layout_constraintStart_toStartOf="@+id/btn_location"
+            app:layout_constraintTop_toBottomOf="@+id/btn_location" />
+
+        <ImageButton
+            android:id="@+id/btn_whatsapp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:background="@null"
+            android:contentDescription="@string/btn_whatsapp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_blue_whatsapp"
+            app:layout_constraintStart_toEndOf="@+id/btn_location"
+            app:layout_constraintTop_toTopOf="@id/btn_location" />
+
+
+        <TextView
+            android:id="@+id/text_whatsapp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_whatsapp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_whatsapp"
+            app:layout_constraintStart_toStartOf="@+id/btn_whatsapp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_whatsapp" />
+
+        <TextView
+            android:id="@+id/text_schedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:text="Jadwal Praktek"
+            android:textSize="22sp"
+            android:textColor="@color/blue_main"
+            android:fontFamily="@font/lato_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_callHospital" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_schedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_schedule"
+            tools:listitem="@layout/item_schedule"/>
+
+        <TextView
+            android:id="@+id/text_hospital_preview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/text_hospital_s_preview"
+            android:textSize="22sp"
+            android:textColor="@color/blue_main"
+            android:fontFamily="@font/lato_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_schedule" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hospitalPhoto"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_hospital_preview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_hospital_preview"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

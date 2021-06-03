@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_setting"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.setting.SettingFragment">
+
+    <TextView
+        android:id="@+id/text_setting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/title_setting"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:textColor="#142C44"
+        android:fontFamily="@font/indigo_daisy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_changeLanguage"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        android:text="@string/button_changeLanguage"
+        android:textAlignment="textStart"
+        android:textColor="#142C44"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/text_setting"
+        app:layout_constraintTop_toBottomOf="@+id/text_setting" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="180dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="35dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/btn_changeLanguage"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_aboutUs"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
+        android:text="@string/button_aboutUs"
+        android:textAlignment="textStart"
+        android:textColor="#142C44"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/text_setting"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="180dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="35dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/btn_aboutUs"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#142C44"
+        android:text="@string/button_logout"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
