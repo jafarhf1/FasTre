@@ -1,10 +1,8 @@
 package com.example.fastre.ui.authentication
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -12,14 +10,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.fastre.R
 import com.example.fastre.ui.main.MainActivity
-import com.google.firebase.auth.FirebaseAuth
 import java.util.ArrayList
 
 class AuthenticationActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
-    private var firstTimeUser = true
-    private var fileUri: Uri? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +25,7 @@ class AuthenticationActivity : AppCompatActivity() {
         viewPager.adapter = pagerAdapter
 
     }
-    fun buttonClicks(view: View) {
+    fun buttonClicks() {
         val mButton = findViewById<Button>(R.id.btn_login)
 
         mButton.setOnClickListener {

@@ -25,33 +25,26 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
-
 class ProfileFragment : Fragment() {
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var user: FirebaseUser
+    private lateinit var reference: DatabaseReference
+    private lateinit var userID: String
+    private val defaultImageUrl = "https://picsum.photos/200"
+    private lateinit var imageUri : Uri
 
     companion object {
         const val REQUEST_IMAGE_CAPTURE = 100
     }
 
-
-    private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
-
-
-    private lateinit var user: FirebaseUser
-    private lateinit var reference: DatabaseReference
-    private lateinit var userID: String
-    private val DEFAULT_IMAGE_URL = "https://picsum.photos/200"
-    private lateinit var imageUri : Uri
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
-
 
         user = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Users")
         userID = user.uid
-
 
         val progressBar : ProgressBar = binding.progressBar
         val fullNameTextView: TextView = binding.tvName
@@ -62,7 +55,7 @@ class ProfileFragment : Fragment() {
         reference.child(userID).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val userProfile = snapshot.getValue(
-                        User::class.java
+                    User::class.java
                 )
                 progressBar.visibility = View.VISIBLE
                 if (userProfile != null) {
@@ -81,20 +74,19 @@ class ProfileFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Something wrong Happened!", Toast.LENGTH_SHORT)
-                        .show()
+                    .show()
             }
         })
-        return binding.root;
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        user?.let { user->
+        user.let { user->
             Glide.with(this)
-                    .load(user.photoUrl)
-                    .into(binding.imgProfile)
+                .load(user.photoUrl)
+                .into(binding.imgProfile)
         }
-
 
         binding.imgProfile.setOnClickListener{
             takePictureIntent()
@@ -103,24 +95,24 @@ class ProfileFragment : Fragment() {
         binding.btnUpdate.setOnClickListener{
             val photo = when{
                 ::imageUri.isInitialized -> imageUri
-                user?.photoUrl == null -> Uri.parse(DEFAULT_IMAGE_URL)
+                user.photoUrl == null -> Uri.parse(defaultImageUrl)
                 else -> user.photoUrl
             }
 
             val updates = UserProfileChangeRequest.Builder()
-                    .setPhotoUri(photo)
-                    .build()
+                .setPhotoUri(photo)
+                .build()
 
-            user?.updateProfile(updates)
-                    ?.addOnCompleteListener { task->
-                        if(task.isSuccessful){
-                            Toast.makeText(context, "Profile Picture Saved", Toast.LENGTH_SHORT)
-                                    .show()
-                        }else{
-                            Toast.makeText(context, "Something wrong Happened!", Toast.LENGTH_SHORT)
-                                    .show()
-                        }
+            user.updateProfile(updates)
+                .addOnCompleteListener { task->
+                    if(task.isSuccessful){
+                        Toast.makeText(context, "Profile Picture Saved", Toast.LENGTH_SHORT)
+                            .show()
+                    }else{
+                        Toast.makeText(context, "Something wrong Happened!", Toast.LENGTH_SHORT)
+                            .show()
                     }
+                }
         }
     }
 
@@ -152,24 +144,24 @@ class ProfileFragment : Fragment() {
         val image = baos.toByteArray()
 
         ref.putBytes(image)
-                .addOnCompleteListener{
-                    if (it.isSuccessful){
-                        ref.downloadUrl.addOnCompleteListener{
-                            it.result?.let{
+            .addOnCompleteListener{ it ->
+                if (it.isSuccessful){
+                    ref.downloadUrl.addOnCompleteListener{ it1 ->
+                        it1.result.let{
+                            if (it != null) {
                                 imageUri = it
-                                val imageView: ImageView = binding.imgProfile
-                                imageView.setImageBitmap(imgBitmap)
-                                Toast.makeText(context, "Profile Upload is Succesful", Toast.LENGTH_SHORT)
-                                        .show()
                             }
-                        }
-                    }else{
-                        Toast.makeText(context, "Something wrong Happened!", Toast.LENGTH_SHORT)
+                            val imageView: ImageView = binding.imgProfile
+                            imageView.setImageBitmap(imgBitmap)
+                            Toast.makeText(context, "Profile Upload is Succesful", Toast.LENGTH_SHORT)
                                 .show()
+                        }
                     }
+                }else{
+                    Toast.makeText(context, "Something wrong Happened!", Toast.LENGTH_SHORT)
+                        .show()
                 }
+            }
 
     }
-
-
 }

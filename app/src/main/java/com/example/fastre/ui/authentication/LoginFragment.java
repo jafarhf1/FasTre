@@ -104,7 +104,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                 startActivity(new Intent(getContext(), MainActivity.class));
                                 getActivity().finish();
                             }else{
-                                user.sendEmailVerification();
                                 Toast.makeText(getContext(), "Check Your Email Verification", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                             }
