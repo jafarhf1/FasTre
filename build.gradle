@@ -2,6 +2,7 @@
 buildscript {
     ext {
         kotlin_version = '1.4.31'
+        room_version = "2.2.5"
     }
     repositories {
         google()
@@ -21,7 +22,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        mavenCentral()
     }
 }
 

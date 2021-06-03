@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -128,8 +129,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>(){
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     if (task.isSuccessful()) {
-
+                                        user.sendEmailVerification();
                                         Toast.makeText(getContext(), "User Has been Registered Succesfully, Verification Email Will be Sent Within 5 minutes", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
 

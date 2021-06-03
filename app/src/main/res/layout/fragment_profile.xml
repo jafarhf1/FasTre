@@ -10,7 +10,7 @@
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/grad"
+        android:background="@drawable/grad_profile"
         android:paddingBottom="20dp">
 
         <RelativeLayout
@@ -30,7 +30,7 @@
 
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_person_add" />
+                android:src="@drawable/ic_blue_person_add" />
 
         </RelativeLayout>
 
