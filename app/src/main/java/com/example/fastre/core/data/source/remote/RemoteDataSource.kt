@@ -132,4 +132,23 @@ class RemoteDataSource(private val apiService: ApiService) {
         return resultData
     }
 
+<<<<<<< HEAD
+=======
+    fun setQueueData(data: QueueResponse, onResult: (QueueResponse?) -> Unit){
+        val resultData = MutableLiveData<ApiResponse<List<QueueResponse>>>()
+
+        val client = apiService.setQueueData(data)
+        client.enqueue(
+            object : Callback<QueueResponse> {
+                override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<QueueResponse>, response: Response<QueueResponse>) {
+                    val setDataUser = response.body()
+                    onResult(setDataUser)
+                }
+            }
+        )
+    }
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 }

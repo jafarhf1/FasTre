@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fastre.R
+<<<<<<< HEAD
 import com.example.fastre.core.data.source.remote.network.ApiConfig
 import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
 import com.example.fastre.core.domain.model.Poly
@@ -16,6 +17,14 @@ import com.google.firebase.auth.FirebaseUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+=======
+import com.example.fastre.core.data.source.remote.RemoteDataSource
+import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
+import com.example.fastre.core.domain.model.Poly
+import com.example.fastre.databinding.ItemPolyBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -55,13 +64,18 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
 
                 val dateFormat: DateFormat = SimpleDateFormat("MM/dd/YY")
                 val date = Date()
+<<<<<<< HEAD
                 val dateView = 1234
+=======
+                val dateView = dateFormat.format(date)
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 
                 val calendar: Calendar = Calendar.getInstance()
                 val hour = calendar.get(Calendar.HOUR)
                 val minute = calendar.get(Calendar.MINUTE)
 
                 btnGetQueue.setOnClickListener {
+<<<<<<< HEAD
                     ApiConfig.instance.setQueueData(
                         dateView, userID, hour, minute
                     ).enqueue(object: Callback<QueueResponse> {
@@ -88,10 +102,36 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
                         }
 
                     })
+=======
+                    setDataUser(dateView, hour, minute)
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
                 }
             }
         }
 
+<<<<<<< HEAD
+=======
+        private fun setDataUser(dateView: String, hour: Int, minute: Int) {
+            val apiService: RemoteDataSource? = null
+            //val apiService = RemoteDataSource(apiService)
+            val userData = QueueResponse(
+                queueDate = dateView,
+                queueId = userID,
+                queueHour = hour,
+                queueMinute = minute
+            )
+
+            apiService?.setQueueData(userData){
+                if (it?.queueId != null) {
+                    Log.d("cek poly adapter", "berhasil")
+                } else {
+                    Log.d("cek poly adapter","Error registering new user")
+                }
+            }
+
+        }
+
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
         init {
             binding.root.setOnClickListener {
                 onItemClick?.invoke(listData[adapterPosition])
