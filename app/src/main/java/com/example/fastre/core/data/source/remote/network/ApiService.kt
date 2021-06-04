@@ -7,7 +7,7 @@ import com.example.fastre.core.data.source.remote.response.polyclinic.ListPolyRe
 import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
 import com.example.fastre.core.data.source.remote.response.schedule.ListScheduleResponse
 import retrofit2.Call
-import retrofit2.http.Body
+import retrofit2.http.*
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -27,6 +27,13 @@ interface ApiService {
     @GET("hospitals/1/polyclinics")
     fun getPoly(): Call<ListPolyResponse>
 
-    @POST("hospitals/1/polyclinics/:polyId/queues/")
-    fun setQueueData(@Body data: QueueResponse): Call<QueueResponse>
+    @POST("hospitals/1/polyclinics/1/queues/")
+    @FormUrlEncoded
+    fun setQueueData(
+        @Field("date") queueDate: Int,
+        @Field("userId") queueId: String,
+        //@Field("userPolyId") queuePolyId: Int,
+        @Field("scheduleHour") queueHour: Int,
+        @Field("scheduleMinute") queueMinute: Int
+    ): Call<QueueResponse>
 }

@@ -18,6 +18,8 @@ import com.example.fastre.core.ui.PolyAdapter
 import com.example.fastre.core.ui.ScheduleAdapter
 import com.example.fastre.core.ui.ViewModelFactory
 import com.example.fastre.databinding.FragmentHospitalBinding
+import com.google.firebase.auth.FirebaseUser
+import kotlin.collections.ArrayList
 
 class HospitalFragment : Fragment() {
     private lateinit var viewModel: HospitalViewModel
@@ -44,6 +46,10 @@ class HospitalFragment : Fragment() {
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[HospitalViewModel::class.java]
+
+            showPoli()
+            showSchedule()
+            showHospitalPhoto()
         }
 
         showPoli()
@@ -110,6 +116,47 @@ class HospitalFragment : Fragment() {
             setHasFixedSize(true)
             adapter = polyAdapter
         }
+
+
+       /** user = FirebaseAuth.getInstance().currentUser!!
+        userID = user.uid
+
+        val dateFormat: DateFormat = SimpleDateFormat("MM/dd/YY")
+        val date = Date()
+        val dateView = dateFormat.format(date)
+
+        val calendar: Calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        polyAdapter.onItemClick = { selectedData ->
+            ApiConfig.instance.setQueueData(
+             dateView, userID, selectedData.polyId, hour, minute
+            ).enqueue(object: Callback<QueueResponse>{
+                override fun onResponse(call: Call<QueueResponse>, response: Response<QueueResponse>) {
+                    Toast.makeText(
+                        context,
+                        "response data: ${response.code()}\n " +
+                                "date: ${response.body()?.queueDate}" +
+                                "userId: ${response.body()?.queueId}" +
+                                "polyId: ${response.body()?.queuePolyId}" +
+                                "hour: ${response.body()?.queueHour}" +
+                                "minute: ${response.body()?.queueMinute}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
+                    Toast.makeText(
+                        context,
+                        "send data to api failed because ${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            })
+
+        } **/
     }
 
     private fun showSchedule(){
@@ -170,7 +217,6 @@ class HospitalFragment : Fragment() {
             adapter = hospitalPhotoAdapter
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

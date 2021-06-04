@@ -132,6 +132,8 @@ class RemoteDataSource(private val apiService: ApiService) {
         return resultData
     }
 
+<<<<<<< HEAD
+=======
     fun setQueueData(data: QueueResponse, onResult: (QueueResponse?) -> Unit){
         val resultData = MutableLiveData<ApiResponse<List<QueueResponse>>>()
 
@@ -148,4 +150,5 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         )
     }
+>>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 }

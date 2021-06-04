@@ -7,13 +7,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiConfig {
-    fun provideApiService(): ApiService {
+    val instance: ApiService by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://34.101.251.230:8000/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkHttpClient())
             .build()
-        return retrofit.create(ApiService::class.java)
+
+        retrofit.create(ApiService::class.java)
     }
 
     private fun provideOkHttpClient(): OkHttpClient {
