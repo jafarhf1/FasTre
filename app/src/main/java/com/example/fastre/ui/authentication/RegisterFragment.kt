@@ -93,12 +93,12 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         mAuth!!.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val user = User(fullName, age, bloodType, email)
+                        val userData = User(fullName, age, bloodType, email)
                         FirebaseDatabase.getInstance().getReference("Users")
                                 .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                                .setValue(user).addOnCompleteListener { task ->
+                                .setValue(userData).addOnCompleteListener { task1 ->
                                     val user = FirebaseAuth.getInstance().currentUser
-                                    if (task.isSuccessful) {
+                                    if (task1.isSuccessful) {
                                         user!!.sendEmailVerification()
                                         Toast.makeText(context, getString(R.string.register_success), Toast.LENGTH_LONG).show()
                                         progressBar!!.visibility = View.GONE
