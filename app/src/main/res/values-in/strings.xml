@@ -57,8 +57,9 @@
     <string name="this_is_queue_number">ini adalah nomor antrian sekarang</string>
     <string name="queue_s_number_right_now">Nomor antrian saat ini</string>
     <string name="this_is_your_queue_number">ini adalah nomor antrian milik anda</string>
-    <string name="your_queue_number">Nomor antrianmu</string>
-    <string name="check_the_estimated_waiting_time">Klik disini untuk mengecek waktu tunggu</string>
+    <string name="your_queue_number">Tekan disini untuk mendapatkan nomor antrian</string>
+    <string name="your_queue_number2">Nomor antrianmu</string>
+    <string name="check_the_estimated_waiting_time">Estimasi waktu tunggu: </string>
     <string name="doctor_s_name">Nama dokter</string>
     <string name="doctor_s_poly">Tipe poliklinik</string>
     <string name="schedule">Jadwal dokter</string>
@@ -78,4 +79,9 @@
     <string name="login_success">Login berhasil</string>
     <string name="login_not_verified">"Periksa email untuk melakukan verifikasi."</string>
     <string name="login_failed">"Login gagal, mohon masukkan email/kata sandi dengan benar."</string>
+    <string name="hospital_name">Rumah Sakit</string>
+    <string name="click_me">Tekan disini</string>
+    <string name="_0">0</string>
+    <string name="please_wait">Mohon tunggu</string>
+    <string name="n_minute">n menit</string>
 </resources>

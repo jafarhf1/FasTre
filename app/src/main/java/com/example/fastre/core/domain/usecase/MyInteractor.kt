@@ -1,9 +1,6 @@
 package com.example.fastre.core.domain.usecase
 
-import androidx.lifecycle.LiveData
-import com.example.fastre.core.data.source.Resource
 import com.example.fastre.core.domain.model.News
-import com.example.fastre.core.domain.model.Poly
 import com.example.fastre.core.domain.repository.IRepository
 
 class MyInteractor (private val repository: IRepository): MyUseCase {
@@ -14,4 +11,5 @@ class MyInteractor (private val repository: IRepository): MyUseCase {
     override fun getAllHospital() = repository.getAllHospital()
     override fun getAllSchedule() = repository.getAllSchedule()
     override fun getAllPoly() = repository.getAllPoly()
+    //override fun getAllMedicalReport() = repository.getAllMedicalRecords()
 }

@@ -9,7 +9,7 @@ interface IRepository {
     fun getFavoriteNews(): LiveData<List<News>>
     fun setFavoriteNews(news: News, state: Boolean)
     fun getAllHospital(): LiveData<Resource<List<Hospital>>>
-    fun getAllMedicalRecords(): LiveData<Resource<List<MedicalRecords>>>
+    //fun getAllMedicalRecords(): LiveData<Resource<List<MedicalRecords>>>
     fun getAllSchedule(): LiveData<Resource<List<Schedule>>>
     fun getAllPoly(): LiveData<Resource<List<Poly>>>
 }

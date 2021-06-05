@@ -9,12 +9,10 @@ import androidx.room.PrimaryKey
 data class MedicalRecordsEntity(
         @PrimaryKey
         @NonNull
-        @ColumnInfo(name = "medicalRecordId")
-        var medicalRecordId: Int,
-
-        @ColumnInfo(name = "medicalRecordPoli")
-        var medicalRecordPoli: String,
 
         @ColumnInfo(name = "date")
-        var date: Int,
+        var recordDate: Int,
+
+        //@ColumnInfo(name = "polyId")
+        //var recordPolyId: String
 )
