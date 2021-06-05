@@ -2,10 +2,7 @@ package com.example.fastre.core.domain.usecase
 
 import androidx.lifecycle.LiveData
 import com.example.fastre.core.data.source.Resource
-import com.example.fastre.core.domain.model.Hospital
-import com.example.fastre.core.domain.model.News
-import com.example.fastre.core.domain.model.Poly
-import com.example.fastre.core.domain.model.Schedule
+import com.example.fastre.core.domain.model.*
 
 interface MyUseCase {
     fun getAllNews(): LiveData<Resource<List<News>>>
@@ -15,4 +12,5 @@ interface MyUseCase {
     fun getAllHospital(): LiveData<Resource<List<Hospital>>>
     fun getAllSchedule(): LiveData<Resource<List<Schedule>>>
     fun getAllPoly(): LiveData<Resource<List<Poly>>>
+    //fun getAllMedicalReport(): LiveData<Resource<List<MedicalRecords>>>
 }

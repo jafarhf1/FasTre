@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fastre.R
 import com.example.fastre.core.data.source.remote.network.ApiConfig
+import com.example.fastre.core.data.source.remote.request.QueueRequest
 import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
 import com.example.fastre.core.domain.model.Poly
 import com.example.fastre.databinding.ItemPolyBinding
@@ -15,8 +16,6 @@ import com.google.firebase.auth.FirebaseUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
@@ -36,7 +35,9 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_poly, parent, false))
 
-    override fun getItemCount() = listData.size
+    override fun getItemCount(): Int {
+        return listData.size
+    }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val data = listData[position]
@@ -52,38 +53,36 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
                 user = FirebaseAuth.getInstance().currentUser!!
                 userID = user.uid
 
-                val dateFormat: DateFormat = SimpleDateFormat("MM/dd/YY")
-                val date = Date()
-                val dateView = 1234
+                val calendar = Calendar.getInstance()
+                val scheduledDay = calendar.get(Calendar.DAY_OF_WEEK) //ini nanti diganti jadi jadwal praktek
+                val scheduledHour = calendar.get(Calendar.HOUR) //ini nanti diganti jadi jadwal praktek
+                val scheduledMinute = calendar.get(Calendar.MINUTE) //ini nanti diganti jadi jadwal praktek
 
-                val calendar: Calendar = Calendar.getInstance()
-                val hour = calendar.get(Calendar.HOUR)
-                val minute = calendar.get(Calendar.MINUTE)
+                btnGetUserNumber.setOnClickListener {
+                    val queueRequest = QueueRequest(
+                        queueUserId = userID,
+                        queueDay = 1,
+                        queueHour = scheduledHour,
+                        queueMinute = scheduledMinute
+                    )
 
-                btnGetQueue.setOnClickListener {
-                    ApiConfig.instance.setQueueData(
-                        dateView, userID, hour, minute
-                    ).enqueue(object: Callback<QueueResponse> {
+                    ApiConfig.instance.setQueue(queueRequest).enqueue(object: Callback<QueueResponse>{
                         override fun onResponse(call: Call<QueueResponse>, response: Response<QueueResponse>) {
-                            val responseText = "response data: ${response.code()}\n " +
-                                        "date: ${response.body()?.queueDate}" +
-                                        "userId: ${response.body()?.queueId}" +
-                                        //"polyId: ${response.body()?.queuePolyId}" +
-                                        "hour: ${response.body()?.queueHour}" +
-                                        "minute: ${response.body()?.queueMinute}"
+                            val responseQueueData = response.body()
+                            Log.d("Post data API success", "QueueId: "+ responseQueueData?.queueId.toString() )
 
-                            if(response.isSuccessful) {
-                                Log.d("PostActivity", "post submitted to API." + response.body().toString())
-                            } else {
-                                Log.d("PostActivity", "post submitted to API." + response.body().toString())
-                            }
+                            val text = "Your queue number"
+                            textUserNumber.text = text
+                            tvUserNumber.text = responseQueueData?.queueUserNumber.toString()
+                            tvEstimatedTime.text = responseQueueData?.estimatedTime.toString()
                         }
 
                         override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
-                            tvPolyName.text = t.message
+                            Log.e("Post data API failed", t.message.toString() )
                         }
 
                     })
+
                 }
             }
         }
@@ -94,4 +93,5 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
             }
         }
     }
+
 }

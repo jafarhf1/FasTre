@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fastre.R
-import de.hdodenhof.circleimageview.CircleImageView
 
 class MedicalRecordsAdapter internal constructor(private val context: Context) : BaseAdapter() {
     internal var users = arrayListOf<MedicalRecords>()
@@ -33,14 +31,14 @@ class MedicalRecordsAdapter internal constructor(private val context: Context) :
 
 
     private inner class ViewHolder constructor(view: View) {
-        private val tvName: TextView = view.findViewById(R.id.id)
-        private val tvPoli: TextView = view.findViewById(R.id.poli)
-        private val tvDate: TextView = view.findViewById(R.id.date)
+        //private val tvName: TextView = view.findViewById(R.id.id)
+        //private val tvPoli: TextView = view.findViewById(R.id.poli)
+        //private val tvDate: TextView = view.findViewById(R.id.date)
 
         fun bind(user: MedicalRecords) {
-            tvName.inputType = user.medicalRecordId
-            tvPoli.text = user.medicalRecordPoli
-            tvDate.inputType = user.date
+            //tvName.inputType = user.medicalRecordId
+            //tvPoli.text = user.medicalRecordPoli
+            //tvDate.inputType = user.date
         }
     }
 

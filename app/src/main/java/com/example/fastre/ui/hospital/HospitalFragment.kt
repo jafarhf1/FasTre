@@ -18,7 +18,6 @@ import com.example.fastre.core.ui.PolyAdapter
 import com.example.fastre.core.ui.ScheduleAdapter
 import com.example.fastre.core.ui.ViewModelFactory
 import com.example.fastre.databinding.FragmentHospitalBinding
-import com.google.firebase.auth.FirebaseUser
 import kotlin.collections.ArrayList
 
 class HospitalFragment : Fragment() {
@@ -47,14 +46,37 @@ class HospitalFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[HospitalViewModel::class.java]
 
+
+            val hospitalPhotoAdapter = HospitalPhotoAdapter(listPhoto)
+            viewModel.hospital.observe(viewLifecycleOwner, { hospital ->
+                if (hospital != null) {
+                    when (hospital) {
+                        is Resource.Loading -> {
+                            Log.d("resource", "observe hospital: loading")
+                            //binding.progressBar.visibility = View.VISIBLE
+                        }
+                        is Resource.Success -> {
+                            Log.d("resource", "observe hospital: succes")
+                            //binding.progressBar.visibility = View.GONE
+                            showInformation(hospital.data)
+                        }
+                        is Resource.Error -> {
+                            Log.d("resource", "observe poly: error")
+                            //binding.progressBar.visibility = View.GONE
+                        }
+                    }
+                }
+            })
+            with(binding.rvHospitalPhoto) {
+                listPhoto.addAll(HospitalPhotoData.listHospitalPhoto)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                setHasFixedSize(true)
+                adapter = hospitalPhotoAdapter
+            }
+
             showPoli()
             showSchedule()
-            showHospitalPhoto()
         }
-
-        showPoli()
-        showSchedule()
-        showHospitalPhoto()
     }
 
     private fun showInformation(data: List<Hospital>?){
@@ -116,47 +138,6 @@ class HospitalFragment : Fragment() {
             setHasFixedSize(true)
             adapter = polyAdapter
         }
-
-
-       /** user = FirebaseAuth.getInstance().currentUser!!
-        userID = user.uid
-
-        val dateFormat: DateFormat = SimpleDateFormat("MM/dd/YY")
-        val date = Date()
-        val dateView = dateFormat.format(date)
-
-        val calendar: Calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR)
-        val minute = calendar.get(Calendar.MINUTE)
-
-        polyAdapter.onItemClick = { selectedData ->
-            ApiConfig.instance.setQueueData(
-             dateView, userID, selectedData.polyId, hour, minute
-            ).enqueue(object: Callback<QueueResponse>{
-                override fun onResponse(call: Call<QueueResponse>, response: Response<QueueResponse>) {
-                    Toast.makeText(
-                        context,
-                        "response data: ${response.code()}\n " +
-                                "date: ${response.body()?.queueDate}" +
-                                "userId: ${response.body()?.queueId}" +
-                                "polyId: ${response.body()?.queuePolyId}" +
-                                "hour: ${response.body()?.queueHour}" +
-                                "minute: ${response.body()?.queueMinute}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-                override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
-                    Toast.makeText(
-                        context,
-                        "send data to api failed because ${t.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-            })
-
-        } **/
     }
 
     private fun showSchedule(){
@@ -187,36 +168,6 @@ class HospitalFragment : Fragment() {
         }
     }
 
-    private fun showHospitalPhoto(){
-        val hospitalPhotoAdapter = HospitalPhotoAdapter(listPhoto)
-        viewModel.hospital.observe(viewLifecycleOwner, { hospital ->
-            if (hospital != null) {
-                when (hospital) {
-                    is Resource.Loading -> {
-                        Log.d("resource", "observe hospital: loading")
-                        //binding.progressBar.visibility = View.VISIBLE
-                    }
-                    is Resource.Success -> {
-                        Log.d("resource", "observe hospital: succes")
-                        //binding.progressBar.visibility = View.GONE
-                        showInformation(hospital.data)
-                        //hospitalPhotoData.getData(hospital.data)
-
-                    }
-                    is Resource.Error -> {
-                        Log.d("resource", "observe hospital: error")
-                        //binding.progressBar.visibility = View.GONE
-                    }
-                }
-            }
-        })
-        with(binding.rvHospitalPhoto) {
-            listPhoto.addAll(HospitalPhotoData.listHospitalPhoto)
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
-            adapter = hospitalPhotoAdapter
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

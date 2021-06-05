@@ -7,13 +7,10 @@ import com.example.fastre.core.data.source.remote.network.ApiResponse
 import com.example.fastre.core.data.source.remote.network.ApiService
 import com.example.fastre.core.data.source.remote.response.hospital.HospitalResponse
 import com.example.fastre.core.data.source.remote.response.hospital.ListHospitalResponse
-import com.example.fastre.core.data.source.remote.response.medicalRecords.ListMedicalRecordsResponse
-import com.example.fastre.core.data.source.remote.response.medicalRecords.MedicalRecordsResponse
 import com.example.fastre.core.data.source.remote.response.news.ListNewsResponse
 import com.example.fastre.core.data.source.remote.response.news.NewsResponse
 import com.example.fastre.core.data.source.remote.response.polyclinic.ListPolyResponse
 import com.example.fastre.core.data.source.remote.response.polyclinic.PolyclinicResponse
-import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
 import com.example.fastre.core.data.source.remote.response.schedule.ListScheduleResponse
 import com.example.fastre.core.data.source.remote.response.schedule.ScheduleResponse
 import retrofit2.Call
@@ -69,7 +66,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return resultData
     }
 
-    fun getAllMedicalRecords(): LiveData<ApiResponse<List<MedicalRecordsResponse>>> {
+    /**fun getAllMedicalRecords(): LiveData<ApiResponse<List<MedicalRecordsResponse>>> {
         val resultData = MutableLiveData<ApiResponse<List<MedicalRecordsResponse>>>()
 
         val client = apiService.getMedicalRecordList()
@@ -88,7 +85,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         })
 
         return resultData
-    }
+    } **/
 
     fun getAllSchedule(): LiveData<ApiResponse<List<ScheduleResponse>>> {
         val resultData = MutableLiveData<ApiResponse<List<ScheduleResponse>>>()
@@ -132,23 +129,4 @@ class RemoteDataSource(private val apiService: ApiService) {
         return resultData
     }
 
-<<<<<<< HEAD
-=======
-    fun setQueueData(data: QueueResponse, onResult: (QueueResponse?) -> Unit){
-        val resultData = MutableLiveData<ApiResponse<List<QueueResponse>>>()
-
-        val client = apiService.setQueueData(data)
-        client.enqueue(
-            object : Callback<QueueResponse> {
-                override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
-                    onResult(null)
-                }
-                override fun onResponse( call: Call<QueueResponse>, response: Response<QueueResponse>) {
-                    val setDataUser = response.body()
-                    onResult(setDataUser)
-                }
-            }
-        )
-    }
->>>>>>> 1b4e93ee8e8347f5bd5755ee1a8ec13012d2dd42
 }

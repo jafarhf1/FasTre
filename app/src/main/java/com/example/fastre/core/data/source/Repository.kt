@@ -81,7 +81,7 @@ class Repository private constructor(
             }
         }.asLiveData()
 
-    override fun getAllMedicalRecords(): LiveData<Resource<List<MedicalRecords>>> =
+    /**override fun getAllMedicalRecords(): LiveData<Resource<List<MedicalRecords>>> =
             object : NetworkBoundResource<List<MedicalRecords>, List<MedicalRecordsResponse>>(appExecutors) {
                 override fun loadFromDB(): LiveData<List<MedicalRecords>> {
                     return Transformations.map(localDataSource.getAllMedicalRecords()) {
@@ -99,7 +99,7 @@ class Repository private constructor(
                     val medicalRecordsList = MedicalRecordsDataMapper.mapResponsesToEntities(data)
                     localDataSource.insertMedicalRecords(medicalRecordsList)
                 }
-            }.asLiveData()
+            }.asLiveData() **/
 
     override fun getAllSchedule(): LiveData<Resource<List<Schedule>>> =
         object : NetworkBoundResource<List<Schedule>, List<ScheduleResponse>>(appExecutors) {
