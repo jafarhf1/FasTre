@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Poly(
     val polyId: Int,
-    val polyName: String
+    val polyName: String,
+    val currentNumber: Int
 ): Parcelable

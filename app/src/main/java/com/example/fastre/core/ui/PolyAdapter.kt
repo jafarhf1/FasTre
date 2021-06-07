@@ -11,16 +11,13 @@ import com.example.fastre.core.data.source.remote.request.QueueRequest
 import com.example.fastre.core.data.source.remote.response.queue.QueueResponse
 import com.example.fastre.core.domain.model.Poly
 import com.example.fastre.databinding.ItemPolyBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.example.fastre.ui.authentication.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
 class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
-    private lateinit var user: FirebaseUser
-    private lateinit var userID: String
 
     private var listData = ArrayList<Poly>()
     var onItemClick: ((Poly) -> Unit)? = null
@@ -49,9 +46,7 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
         fun bind(data: Poly) {
             with(binding) {
                 tvPolyName.text = data.polyName
-
-                user = FirebaseAuth.getInstance().currentUser!!
-                userID = user.uid
+                tvQueueNumber.text = data.currentNumber.toString()
 
                 val calendar = Calendar.getInstance()
                 val scheduledDay = calendar.get(Calendar.DAY_OF_WEEK) //ini nanti diganti jadi jadwal praktek
@@ -60,27 +55,37 @@ class PolyAdapter: RecyclerView.Adapter<PolyAdapter.ListViewHolder>() {
 
                 btnGetUserNumber.setOnClickListener {
                     val queueRequest = QueueRequest(
-                        queueUserId = userID,
-                        queueDay = 1,
+                        queueUserId = User.userID,
+                        queueDay = 2,
                         queueHour = scheduledHour,
                         queueMinute = scheduledMinute
                     )
 
-                    ApiConfig.instance.setQueue(queueRequest).enqueue(object: Callback<QueueResponse>{
+                    ApiConfig.instance.setQueue(data.polyId, queueRequest).enqueue(object: Callback<QueueResponse>{
                         override fun onResponse(call: Call<QueueResponse>, response: Response<QueueResponse>) {
                             val responseQueueData = response.body()
                             Log.d("Post data API success", "QueueId: "+ responseQueueData?.queueId.toString() )
 
-                            val text = "Your queue number"
-                            textUserNumber.text = text
-                            tvUserNumber.text = responseQueueData?.queueUserNumber.toString()
-                            tvEstimatedTime.text = responseQueueData?.estimatedTime.toString()
+                            if (responseQueueData?.queueId != null){
+                                val text = "Your queue number"
+                                textUserNumber.text = text
+                                tvUserNumber.text = responseQueueData.queueUserNumber.toString()
+
+                                val estimatedTimeInInteger = responseQueueData.estimatedTime.toInt()
+                                tvEstimatedTime.text = estimatedTimeInInteger.toString()
+                            } else {
+                                val text = "This poly doesn't have a scheduled today"
+                                val number = "-"
+                                val time = "0"
+                                textUserNumber.text = text
+                                tvUserNumber.text = number
+                                tvEstimatedTime.text = time
+                            }
                         }
 
                         override fun onFailure(call: Call<QueueResponse>, t: Throwable) {
                             Log.e("Post data API failed", t.message.toString() )
                         }
-
                     })
 
                 }

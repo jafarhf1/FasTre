@@ -5,5 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MedicalRecords(
-        val recordDate: Int
+        var medicalDate: String,
+        var medicalPolyId: String,
+        var medicalUserNumber: Int?,
+        var medicalQueueId: String?
 ): Parcelable

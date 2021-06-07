@@ -12,7 +12,7 @@ import com.example.fastre.core.data.source.local.entity.*
     ScheduleEntity::class,
     MedicalRecordsEntity::class,
     PolyEntity::class
-], version = 2, exportSchema = false)
+], version = 1, exportSchema = false)
 
 abstract class MyDatabase: RoomDatabase() {
 

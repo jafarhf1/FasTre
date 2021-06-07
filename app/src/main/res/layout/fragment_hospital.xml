@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_hospital">
+        android:background="@drawable/bg_2">
 
         <TextView
             android:id="@+id/tv_hospitalName"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:layout_marginEnd="5dp"
-            android:text="Swipe ke kiri untuk melihat poli lainnya."
+            android:text="@string/swipe_poly"
             android:textSize="12sp"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@id/rv_poly"
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="50dp"
-            android:text="Jadwal Praktek"
+            android:text="@string/title_schedule"
             android:textSize="22sp"
             android:textColor="@color/blue_main"
             android:fontFamily="@font/lato_bold"
@@ -186,7 +186,7 @@
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

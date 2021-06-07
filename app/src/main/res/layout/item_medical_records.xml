@@ -1,61 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    app:cardCornerRadius="16dp"
-    style="@style/CardView.Light">
+    android:layout_margin="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_medical_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_item_medical"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="H,2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/this_is_medical_background" />
 
-        <ImageView
-            android:id="@+id/iv_newsPoster"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/white"
-            android:contentDescription="this is news poster"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="H,2:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_medical_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:textSize="14sp"
+        android:textColor="@color/blue_main"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/iv_medical_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_medical_background"
+        app:layout_constraintTop_toTopOf="@id/iv_medical_background"
+        tools:text="Medical Records" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#7F000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/top_space" />
+    <ImageView
+        android:id="@+id/iv_medicalPoly"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/ic_blue_home"
+        app:layout_constraintStart_toStartOf="@id/tv_medical_date"
+        app:layout_constraintTop_toBottomOf="@id/tv_medical_date"
+        android:contentDescription="@string/this_is_icon_poly" />
 
-        <Space
-            android:id="@+id/top_space"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_newsTitle"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tv_medicalPoly"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/blue_main"
+        app:layout_constraintStart_toEndOf="@id/iv_medicalPoly"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_medicalPoly"
+        app:layout_constraintBottom_toBottomOf="@id/iv_medicalPoly"
+        tools:text="Poly name"/>
 
-        <TextView
-            android:id="@+id/tv_newsTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Medical Records" />
+    <ImageView
+        android:id="@+id/iv_medical_user_number"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_blue_list_numbered"
+        app:layout_constraintStart_toStartOf="@id/iv_medicalPoly"
+        app:layout_constraintTop_toBottomOf="@id/iv_medicalPoly"
+        android:contentDescription="@string/this_is_icon_number"/>
+
+    <TextView
+        android:id="@+id/text_medical_user_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/queue_number"
+        android:textSize="16sp"
+        android:textColor="@color/blue_main"
+        app:layout_constraintStart_toEndOf="@id/iv_medical_user_number"
+        app:layout_constraintTop_toTopOf="@id/iv_medical_user_number"
+        app:layout_constraintBottom_toBottomOf="@id/iv_medical_user_number" />
+
+    <TextView
+        android:id="@+id/tv_medical_user_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/blue_main"
+        app:layout_constraintStart_toEndOf="@id/text_medical_user_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_medical_user_number"
+        app:layout_constraintBottom_toBottomOf="@id/iv_medical_user_number"
+        tools:text="user number"/>
+
+    <ImageView
+        android:id="@+id/iv_medical_queue_id"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_blue_id"
+        app:layout_constraintStart_toStartOf="@id/iv_medical_user_number"
+        app:layout_constraintEnd_toEndOf="@id/iv_medical_user_number"
+        app:layout_constraintTop_toBottomOf="@id/iv_medical_user_number"
+        android:contentDescription="@string/this_is_icon_id"/>
+
+    <TextView
+        android:id="@+id/tv_medical_queue_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/blue_main"
+        app:layout_constraintStart_toStartOf="@id/text_medical_user_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_medical_queue_id"
+        app:layout_constraintBottom_toBottomOf="@id/iv_medical_queue_id"
+        tools:text="QueueId"/>
 
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

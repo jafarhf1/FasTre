@@ -7,12 +7,15 @@ import com.example.fastre.core.data.source.remote.network.ApiResponse
 import com.example.fastre.core.data.source.remote.network.ApiService
 import com.example.fastre.core.data.source.remote.response.hospital.HospitalResponse
 import com.example.fastre.core.data.source.remote.response.hospital.ListHospitalResponse
+import com.example.fastre.core.data.source.remote.response.medicalRecords.ListMedicalRecordsResponse
+import com.example.fastre.core.data.source.remote.response.medicalRecords.MedicalRecordsResponse
 import com.example.fastre.core.data.source.remote.response.news.ListNewsResponse
 import com.example.fastre.core.data.source.remote.response.news.NewsResponse
 import com.example.fastre.core.data.source.remote.response.polyclinic.ListPolyResponse
 import com.example.fastre.core.data.source.remote.response.polyclinic.PolyclinicResponse
 import com.example.fastre.core.data.source.remote.response.schedule.ListScheduleResponse
 import com.example.fastre.core.data.source.remote.response.schedule.ScheduleResponse
+import com.example.fastre.ui.authentication.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,15 +69,12 @@ class RemoteDataSource(private val apiService: ApiService) {
         return resultData
     }
 
-    /**fun getAllMedicalRecords(): LiveData<ApiResponse<List<MedicalRecordsResponse>>> {
+    fun getAllMedicalRecords(): LiveData<ApiResponse<List<MedicalRecordsResponse>>> {
         val resultData = MutableLiveData<ApiResponse<List<MedicalRecordsResponse>>>()
 
-        val client = apiService.getMedicalRecordList()
+        val client = apiService.getMedicalRecordList(User.userID)
         client.enqueue(object : Callback<ListMedicalRecordsResponse> {
-            override fun onResponse(
-                    call: Call<ListMedicalRecordsResponse>,
-                    response: Response<ListMedicalRecordsResponse>
-            ) {
+            override fun onResponse(call: Call<ListMedicalRecordsResponse>, response: Response<ListMedicalRecordsResponse>) {
                 val dataArray = response.body()?.medicalRecords
                 resultData.value = if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
             }
@@ -85,7 +85,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         })
 
         return resultData
-    } **/
+    }
 
     fun getAllSchedule(): LiveData<ApiResponse<List<ScheduleResponse>>> {
         val resultData = MutableLiveData<ApiResponse<List<ScheduleResponse>>>()

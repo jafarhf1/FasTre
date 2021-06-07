@@ -42,16 +42,16 @@ class NewsFragment : Fragment() {
                 if (news != null) {
                     when (news) {
                         is Resource.Loading -> {
-                            Log.d("resource", "loading" )
+                            Log.d("resource", "observe news: loading" )
                             binding.progressBar.visibility = View.VISIBLE
                         }
                         is Resource.Success -> {
-                            Log.d("resource", "succes" )
+                            Log.d("resource", "observe news: succes" )
                             binding.progressBar.visibility = View.GONE
                             newsAdapter.setData(news.data)
                         }
                         is Resource.Error -> {
-                            Log.d("resource", "error" )
+                            Log.d("resource", "observe news: error" )
                             binding.progressBar.visibility = View.GONE
                         }
                     }

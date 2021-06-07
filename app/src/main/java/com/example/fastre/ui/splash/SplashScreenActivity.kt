@@ -22,8 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     }
 
-    private fun loginAnything()
-    {
+    private fun loginAnything() {
         auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
             Handler().postDelayed({

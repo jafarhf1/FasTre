@@ -26,10 +26,10 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSchedule(schedule: List<ScheduleEntity>)
 
-    //@Query("SELECT * FROM medical_records")
-    //fun getAllMedicalRecords(): LiveData<List<MedicalRecordsEntity>>
-    //@Insert(onConflict = OnConflictStrategy.REPLACE)
-    //fun insertMedicalRecord(hospital: List<MedicalRecordsEntity>)
+    @Query("SELECT * FROM medical_records")
+    fun getAllMedicalRecords(): LiveData<List<MedicalRecordsEntity>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertMedicalRecord(hospital: List<MedicalRecordsEntity>)
 
     @Query("SELECT * FROM poly")
     fun getAllPoly(): LiveData<List<PolyEntity>>

@@ -83,5 +83,13 @@
     <string name="click_me">Tekan disini</string>
     <string name="_0">0</string>
     <string name="please_wait">Mohon tunggu</string>
-    <string name="n_minute">n menit</string>
+    <string name="n_minute">n </string>
+    <string name="minute">menit</string>
+    <string name="this_is_icon_id">ini adalah simbol id</string>
+    <string name="this_is_icon_poly">ini adalah simbol poliklinik</string>
+    <string name="this_is_icon_number">ini adalah simbol nomor urut anda</string>
+    <string name="this_is_medical_background">ini adalah background</string>
+    <string name="queue_number">Nomor antrian: </string>
+    <string name="swipe_poly">Swipe ke kiri untuk melihat poli lainnya.</string>
+    <string name="title_schedule">Jadwal Praktek</string>
 </resources>
