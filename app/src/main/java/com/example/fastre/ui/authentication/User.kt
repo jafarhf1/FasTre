@@ -1,6 +1,14 @@
 package com.example.fastre.ui.authentication
 
+import com.google.firebase.auth.FirebaseAuth
+
 class User {
+
+    companion object{
+        val user = FirebaseAuth.getInstance().currentUser!!
+        val userID = user.uid
+    }
+
     var fullName: String? = null
     var age: String? = null
     var bloodType: String? = null

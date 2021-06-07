@@ -11,6 +11,7 @@ object PolyDataMapper {
             val poly = PolyEntity(
                 polyId = it.polyId,
                 polyName = it.polyName,
+                currentNumber = it.currentNumber
               )
             list.add(poly)
         }
@@ -22,6 +23,7 @@ object PolyDataMapper {
             Poly(
                 polyId = it.polyId,
                 polyName = it.polyName,
+                currentNumber = it.currentNumber
             )
         }
 }

@@ -82,5 +82,13 @@
     <string name="click_me">Click Me!</string>
     <string name="_0">0</string>
     <string name="please_wait">Please wait</string>
-    <string name="n_minute">n minute</string>
+    <string name="n_minute">n </string>
+    <string name="minute">minute</string>
+    <string name="this_is_icon_id">this is icon id</string>
+    <string name="this_is_icon_poly">this is icon poly</string>
+    <string name="this_is_icon_number">this is icon number</string>
+    <string name="this_is_medical_background">this is medical background</string>
+    <string name="queue_number">Queue number:</string>
+    <string name="swipe_poly">Swipe left to see the other polyclinics.</string>
+    <string name="title_schedule">Schedule</string>
 </resources>

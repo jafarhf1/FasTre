@@ -11,5 +11,5 @@ class MyInteractor (private val repository: IRepository): MyUseCase {
     override fun getAllHospital() = repository.getAllHospital()
     override fun getAllSchedule() = repository.getAllSchedule()
     override fun getAllPoly() = repository.getAllPoly()
-    //override fun getAllMedicalReport() = repository.getAllMedicalRecords()
+    override fun getAllMedicalRecords() = repository.getAllMedicalRecords()
 }

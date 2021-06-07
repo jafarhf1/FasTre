@@ -14,4 +14,7 @@ data class PolyEntity(
 
     @ColumnInfo(name = "polyName")
     var polyName: String,
+
+    @ColumnInfo(name = "currentNumber")
+    val currentNumber: Int
 )

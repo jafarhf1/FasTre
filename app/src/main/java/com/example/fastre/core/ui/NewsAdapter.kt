@@ -13,7 +13,6 @@ import com.example.fastre.ui.news.NewsDetailActivity
 import java.util.ArrayList
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ListViewHolder>() {
-
     private var listData = ArrayList<News>()
     var onItemClick: ((News) -> Unit)? = null
 

@@ -29,8 +29,8 @@ class LocalDataSource private constructor(private val dao: Dao) {
     fun getAllSchedule(): LiveData<List<ScheduleEntity>> = dao.getAllSchedule()
     fun insertSchedule(scheduleList: List<ScheduleEntity>) = dao.insertSchedule(scheduleList)
 
-    //fun getAllMedicalRecords(): LiveData<List<MedicalRecordsEntity>> = dao.getAllMedicalRecords()
-    //fun insertMedicalRecords(mrList: List<MedicalRecordsEntity>) = dao.insertMedicalRecord(mrList)
+    fun getAllMedicalRecords(): LiveData<List<MedicalRecordsEntity>> = dao.getAllMedicalRecords()
+    fun insertMedicalRecords(mrList: List<MedicalRecordsEntity>) = dao.insertMedicalRecord(mrList)
 
     fun getAllPoly(): LiveData<List<PolyEntity>> = dao.getAllPoly()
     fun insertPoly(polyList: List<PolyEntity>) = dao.insertPoly(polyList)

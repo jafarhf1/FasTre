@@ -7,5 +7,8 @@ data class PolyclinicResponse(
     val polyId: Int,
 
     @field:SerializedName("polyName")
-    val polyName: String
+    val polyName: String,
+
+    @field:SerializedName("currentNumber")
+    val currentNumber: Int
 )

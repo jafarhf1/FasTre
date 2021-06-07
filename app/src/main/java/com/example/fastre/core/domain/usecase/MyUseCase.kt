@@ -12,5 +12,5 @@ interface MyUseCase {
     fun getAllHospital(): LiveData<Resource<List<Hospital>>>
     fun getAllSchedule(): LiveData<Resource<List<Schedule>>>
     fun getAllPoly(): LiveData<Resource<List<Poly>>>
-    //fun getAllMedicalReport(): LiveData<Resource<List<MedicalRecords>>>
+    fun getAllMedicalRecords(): LiveData<Resource<List<MedicalRecords>>>
 }

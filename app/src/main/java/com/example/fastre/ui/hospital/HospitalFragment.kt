@@ -46,7 +46,6 @@ class HospitalFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[HospitalViewModel::class.java]
 
-
             val hospitalPhotoAdapter = HospitalPhotoAdapter(listPhoto)
             viewModel.hospital.observe(viewLifecycleOwner, { hospital ->
                 if (hospital != null) {

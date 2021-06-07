@@ -3,7 +3,9 @@ package com.example.fastre.ui.authentication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -20,18 +22,16 @@ class AuthenticationActivity : AppCompatActivity() {
         supportActionBar?.hide()
         val viewPager = findViewById<ViewPager>(R.id.ViewPager)
         val pagerAdapter: AuthenticationPagerAdapter = this.AuthenticationPagerAdapter(supportFragmentManager)
-        pagerAdapter.addFragmet(LoginFragment())
-        pagerAdapter.addFragmet(RegisterFragment())
+        pagerAdapter.addFragment(LoginFragment())
+        pagerAdapter.addFragment(RegisterFragment())
         viewPager.adapter = pagerAdapter
 
     }
-    fun buttonClicks() {
-        val mButton = findViewById<Button>(R.id.btn_login)
-
+    fun buttonClicks(view: View) {
+        val mButton = view.findViewById<Button>(R.id.btn_login)
         mButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
     }
 
     internal inner class AuthenticationPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
@@ -44,7 +44,7 @@ class AuthenticationActivity : AppCompatActivity() {
             return fragmentList.size
         }
 
-        fun addFragmet(fragment: Fragment) {
+        fun addFragment(fragment: Fragment) {
             fragmentList.add(fragment)
         }
     }
