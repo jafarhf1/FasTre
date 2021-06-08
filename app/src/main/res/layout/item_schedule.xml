@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="16dp"
+    style="@style/CardView.Light">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.85"
+        android:background="@android:color/black"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv_doctorPhoto"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/news_poster"
+            android:scaleType="centerCrop"
+            android:src="@drawable/contoh"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_schedule3"
+            app:layout_constraintStart_toStartOf="@+id/tv_doctorName"
+            app:layout_constraintTop_toTopOf="@+id/tv_doctorPoly" />
+
+        <TextView
+            android:id="@+id/tv_doctorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/doctor_s_name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_doctorPoly"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/lato_regular"
+            android:text="@string/doctor_s_poly"
+            android:textColor="@color/blue_100"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_doctorPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/tv_doctorName" />
+
+        <TextView
+            android:id="@+id/tv_schedule1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounder_blue"
+            android:padding="8dp"
+            android:text="@string/schedule"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_doctorPoly"
+            app:layout_constraintTop_toBottomOf="@id/tv_doctorPoly" />
+
+        <TextView
+            android:id="@+id/tv_schedule2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounder_blue"
+            android:padding="8dp"
+            android:text="@string/schedule"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_doctorPoly"
+            app:layout_constraintTop_toBottomOf="@id/tv_schedule1" />
+
+        <TextView
+            android:id="@+id/tv_schedule3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounder_blue"
+            android:padding="8dp"
+            android:text="@string/schedule"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_doctorPoly"
+            app:layout_constraintTop_toBottomOf="@id/tv_schedule2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

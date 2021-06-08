@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_about_us"
+    tools:context=".ui.setting.AboutUsActivity">
+
+    <View
+        android:id="@+id/container"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="@drawable/rounder_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logo"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintEnd_toEndOf="@id/container"
+        app:layout_constraintTop_toTopOf="@id/container"
+        android:contentDescription="@string/logo" />
+
+    <ImageView
+        android:id="@+id/logo_email"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_white_email"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:contentDescription="@string/email_logo" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="@string/email"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@id/logo_email"
+        app:layout_constraintBottom_toBottomOf="@id/logo_email"
+        app:layout_constraintStart_toEndOf="@id/logo_email"
+        app:layout_constraintEnd_toEndOf="@id/container"/>
+
+    <ImageView
+        android:id="@+id/logo_phone"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_white_phone"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@id/container"
+        app:layout_constraintTop_toBottomOf="@id/logo_email"
+        android:contentDescription="@string/phone_logo" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="087934482945"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@id/logo_phone"
+        app:layout_constraintBottom_toBottomOf="@id/logo_phone"
+        app:layout_constraintStart_toEndOf="@id/logo_phone"
+        app:layout_constraintEnd_toEndOf="@id/container"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,8 @@
-package com.example.fastre.ui.splash;
+package com.example.fastre.ui.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.os.Handler
 import com.example.fastre.R
 import com.example.fastre.ui.authentication.AuthenticationActivity
@@ -23,8 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     }
 
-    private fun loginAnything()
-    {
+    private fun loginAnything() {
         auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {
             Handler().postDelayed({
